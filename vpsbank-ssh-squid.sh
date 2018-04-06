@@ -1,18 +1,18 @@
 #!/bin/bash
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager 2.0.1" ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
-echo "● Instalar e configurar o proxy squid nas portas 80, 3128, 8080 e 8000" ; echo "  para permitir conexões SSH para este servidor"
+echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต 80, 3128, 8080 e 8000" ; echo "  เพื่อไห้ อนุญาต เซิฟเวอร์ SSH e Dropbear "
 echo "● Configurar o OpenSSH portas 22 e 143 Dropbear para rodar nas portas 110 "
-echo "● Instalar um conjunto de scripts como comandos do sistema para o gerenciamento de usuários" ; tput sgr0
+echo "● ติดตั้ง ชุด สคริปต์  สำหรับ ใช้งาน ในอุปกรณ์ นี้ sistema para " ; tput sgr0
 echo ""
-tput setaf 3 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+tput setaf 3 ; tput bold ; read -n 1 -s -p "กด ปุ่ม ใดๆ เพื่อ ดำเนินการต่อ ..." ; echo "" ; echo "" ; tput sgr0
 tput setaf 2 ; tput bold ; echo "	Termos de Uso" ; tput sgr0
 echo ""
-echo "Ao utilizar o 'VPS Manager 2.0' você concorda com os seguintes termos de uso:"
+echo "เมื่อใช้  'VPS Manager 2.0' คุณ ยอมรับ ใน ข้อกำหนด นี้  uso:"
 echo ""
-echo "1. Você pode:"
-echo "a. Instalar e usar o 'VPS Manager 2.0' no(s) seu(s) servidor(es)."
-echo "b. Criar, gerenciar e remover um número ilimitado de usuários através desse conjunto de scripts."
+echo "1. คุณสามารถ:"
+echo "a. ติดตั้งและใช้ 'VPS Manager 2.0'บน อุปกรณ์ ของคุณ ' no(s) seu(s) servidor(es)."
+echo "b. สร้าง จัดการ และ ลบผู้ใช้ จำนวนไม่ จำกัด ใน    ชุด สคริป นี้  ."
 echo ""
 tput setaf 3 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 echo "2. Você não pode:"
