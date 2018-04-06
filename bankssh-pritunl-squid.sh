@@ -80,7 +80,8 @@ service ssh restart
 service dropbear restart
 cd
 
-# install pritunl
+cd
+#!/usr/bin/env bash
 echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.6.list
 echo "deb http://repo.pritunl.com/stable/apt xenial main" > /etc/apt/sources.list.d/pritunl.list
 apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
@@ -195,12 +196,12 @@ then
 	fi
 fi
 echo ""
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "พร็อกซี่ ปลาหมึก ติดตั้ง บน พอร์ต ไอ้เหี้ย ไอ้สัส: 80, 3128, 8080 e 8000" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH และ dropbear ใช้งาน บน พอร์ต 22 e 143,109 " ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "สคริปต์ สำหรับ การจัดการ ผู้ใช้ ติดแล้ว   " ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "อ่านเอกสาร เพื่อหลีกเลี่ยง ข้อสงสัย และปัญหา!" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "ดูคำสั่ง ใช้งาน หากต้องการดูคำสั่ง คำสั่งที่มีให้ใช้   : ajuda" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "ติดตั้ง service pritunl ของคุณ ข้อมูลไปที่เพิ่มเติมไปที่" (htttps://ไอพีของคุณ
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "พร็อกซี่ ปลาหมึก ติดตั้ง บน พอร์ต : 80, 3128, 8080 e 8000" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH 22 143 dropbear ใช้งาน บน พอร์ต  109 " ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "คำสั่งใช้งาน หากต้องการดูคำสั่ง: ajuda"; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "อ่านเอกสาร เพื่อหลีกเลี่ยง ข้อสงสัย และปัญหา! "; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "สคริปต์ เพิ่มชื่อผู้ใช้งาน:criarusuario" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "ข้อมูลเพิ่มเติม ดูคีร์ ⏬🔽⏬service🚔pritunl🔽⏬🔽 ด่านล่าง ไปที่หน้าไวซ๋" htttps://ip_Server; tput sgr0
 echo ""
 if [[ "$optiondb" = '2' ]]; then
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
@@ -213,3 +214,4 @@ if [[ "$sshcompression" = 'n' ]]; then
 	grep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
 fi
 exit 1
+sudo pritunl setup-key
