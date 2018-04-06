@@ -1,4 +1,5 @@
 #!/bin/bash
+#cd root
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager 2.0.1" ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
 echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต, 80, 3128, 8080 e 8000"; echo " เพื่อไห้อนุญาตเซิฟเวอร์ SSH e Dropbear e openvpn "
@@ -78,10 +79,7 @@ echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
-sudo rm /etc/default/dropbear
-sudo wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/dropbear -O /etc/default/dropbear
-service ssh restart
-service dropbear restart
+
 
 
 cd
