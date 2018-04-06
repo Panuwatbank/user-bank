@@ -1,9 +1,9 @@
 #!/bin/bash
-#cd root
+cd root
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager 2.0.1" ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
-echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต, 80, 3128, 8080 e 8000"; echo " เพื่อไห้อนุญาตเซิฟเวอร์ SSH e Dropbear e openvpn "
-echo "● Configurar o OpenSSH o Openvpn pritunl" Dropbear para rodar nas portas 22 143 e 109"
+echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต, 80, 3128, 8080 e 8000"; echo " เพื่อไห้อนุญาตเซิฟเวอร์ SSH e Dropbear e openvpn "tput sgr0
+echo "● Configurar o OpenSSH o Openvpn pritunl" Dropbear para rodar nas portas 22 143 e 109"tput sgr0
 echo "● ติดตั้ง ชุด สคริปต์  สำหรับ ใช้งาน ในอุปกรณ์ นี้ sistema para " ; tput sgr0
 
 echoecho ""
@@ -79,9 +79,9 @@ echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
-
-
-
+cd
+echo""
+fi
 cd
 #!/usr/bin/env bash
 echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.6.list
@@ -94,16 +94,16 @@ apt-get --assume-yes install pritunl mongodb-org
 systemctl start pritunl mongod
 systemctl enable pritunl mongod
 sudo service pritunl start
-
-# Install Pritunl Ubuntu 14.04 x 64bit
 cd
+# Install Pritunl Ubuntu 14.04 x 64bit
+#!Eof/cd
 sudo tee -a /etc/apt/sources.list.d/mongodb-org-3.6.list << EOF
 deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.6 multiverse
 EOF
 sudo tee -a /etc/apt/sources.list.d/pritunl.list << EOF
 deb http://repo.pritunl.com/stable/apt trusty main
 EOF
-cd
+Eof
 apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 42F3E95A2C4F08279C4960ADD68FA50FEA312927
 apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A 
 apt-get update
