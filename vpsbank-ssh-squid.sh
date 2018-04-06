@@ -2,7 +2,7 @@
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager 2.0.1" ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
 echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต 80, 3128, 8080 e 8000" ; echo "  เพื่อไห้ อนุญาต เซิฟเวอร์ SSH e Dropbear "
-echo "● Configurar o OpenSSH portas 22 e 143 Dropbear para rodar nas portas 110 "
+echo "● Configurar o OpenSSH portas 22 e 143 Dropbear para rodar nas portas 109 "
 echo "● ติดตั้ง ชุด สคริปต์  สำหรับ ใช้งาน ในอุปกรณ์ นี้ sistema para " ; tput sgr0
 echo ""
 tput setaf 3 ; tput bold ; read -n 1 -s -p "กด ปุ่ม ใดๆ เพื่อ ดำเนินการต่อ ..." ; echo "" ; echo "" ; tput sgr0
@@ -14,7 +14,7 @@ echo "1. คุณสามารถ:"
 echo "a. ติดตั้งและใช้ 'VPS Manager 2.0'บน อุปกรณ์ ของคุณ ' no(s) seu(s) servidor(es)."
 echo "b. สร้าง จัดการ และ ลบผู้ใช้ จำนวนไม่ จำกัด ใน    ชุด สคริป นี้  ."
 echo ""
-tput setaf 3 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+tput setaf 3 ; tput bold ; read -n 1 -s -p "กดปุ่ม เพื่อ ดำเนิน การต่อ qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 echo "2. Você não pode:"
 echo "a. Editar, modificar, compartilhar ou redistribuir (gratuitamente ou comercialmente)"
 echo "esse conjunto de scripts sem autorização do desenvolvedor."
@@ -184,7 +184,7 @@ then
 fi
 echo ""
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "พร็อกซี่ ปลาหมึก ติดตั้ง บน พอร์ต ไอ้เหี้ย ไอ้สัส: 80, 3128, 8080 e 8000" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH และ dropbear ใช้งาน บน พอร์ต 22 e 143,109 e 110" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH และ dropbear ใช้งาน บน พอร์ต 22 e 143,109 " ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "สคริปต์ สำหรับ การจัดการ ผู้ใช้ ติดแล้ว   " ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "อ่านเอกสาร เพื่อหลีกเลี่ยง ข้อสงสัย และปัญหา!" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "ดูคำสั่ง ใช้งาน หากต้องการดูคำสั่ง คำสั่งที่มีให้ใช้   : ajuda" ; tput sgr0
