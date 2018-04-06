@@ -78,10 +78,11 @@ echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
-cd
-sudo apt-get install dropbear
 sudo rm /etc/default/dropbear
 sudo wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/dropbear -O /etc/default/dropbear
+service ssh restart
+service dropbear restart
+
 
 cd
 #!/usr/bin/env bash
@@ -97,7 +98,7 @@ systemctl enable pritunl mongod
 sudo service pritunl start
 
 # Install Pritunl [Ubuntu 14.04 x 64bit] 
-cd
+Lile
 sudo tee -a /etc/apt/sources.list.d/mongodb-org-3.6.list << EOF
 deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.6 multiverse
 EOF
