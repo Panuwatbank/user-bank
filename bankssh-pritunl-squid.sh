@@ -1,10 +1,11 @@
 #!/bin/bash
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager 2.0.1" ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
-echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต 80, 3128, 8080 e 8000" ; echo "  เพื่อไห้ อนุญาต เซิฟเวอร์ SSH e Dropbear "
+echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต 80, 3128, 8080 e 8000" ; echo " เพื่อไห้อนุญาตเซิฟเวอร์ SSH e Dropbear e openvpn "
 echo "● Configurar o OpenSSH portas 22 e 143 Dropbear para rodar nas portas 109 "
 echo "● ติดตั้ง ชุด สคริปต์  สำหรับ ใช้งาน ในอุปกรณ์ นี้ sistema para " ; tput sgr0
-echo ""
+echo "● ติดตั้ง อัตโนมัติ ใช้งาน Openvpn ในแบบ pritunl ใน อุปกรณ์นี้ ; tput sgr0
+echoecho ""
 tput setaf 3 ; tput bold ; read -n 1 -s -p "กด ปุ่ม ใดๆ เพื่อ ดำเนินการต่อ ..." ; echo "" ; echo "" ; tput sgr0
 tput setaf 2 ; tput bold ; echo "	Termos de Uso" ; tput sgr0
 echo ""
@@ -77,8 +78,19 @@ echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
+cd
 
-
+# install pritunl
+echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.6.list
+echo "deb http://repo.pritunl.com/stable/apt xenial main" > /etc/apt/sources.list.d/pritunl.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+apt-get --assume-yes update
+apt-get --assume-yes upgrade
+apt-get --assume-yes install pritunl mongodb-org
+systemctl start pritunl mongod
+systemctl enable pritunl mongod
+sudo service pritunl start
 
 rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
@@ -188,6 +200,7 @@ tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH และ dropbear ใ�
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "สคริปต์ สำหรับ การจัดการ ผู้ใช้ ติดแล้ว   " ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "อ่านเอกสาร เพื่อหลีกเลี่ยง ข้อสงสัย และปัญหา!" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "ดูคำสั่ง ใช้งาน หากต้องการดูคำสั่ง คำสั่งที่มีให้ใช้   : ajuda" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "ติดตั้ง service pritunl ของคุณ ข้อมูลไปที่เพิ่มเติมไปที่" (htttps://ไอพีของคุณ
 echo ""
 if [[ "$optiondb" = '2' ]]; then
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
