@@ -183,11 +183,11 @@ then
 	fi
 fi
 echo ""
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80, 3128, 8080 e 8000" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH dropbear rodando nas portas 22 e 143,109 110" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Scripts para gerenciamento de usuário instalados" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Leia a documentação para evitar dúvidas e problemas!" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Para ver os comandos disponíveis use o comando: ajuda" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "พร็อกซี่ ปลาหมึก ติดตั้ง บน พอร์ต ไอ้เหี้ย ไอ้สัส: 80, 3128, 8080 e 8000" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH และ dropbear ใช้งาน บน พอร์ต 22 e 143,109 e 110" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "สคริปต์ สำหรับ การจัดการ ผู้ใช้ ติดแล้ว   " ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "อ่านเอกสาร เพื่อหลีกเลี่ยง ข้อสงสัย และปัญหา!" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "ดูคำสั่ง ใช้งาน หากต้องการดูคำสั่ง คำสั่งที่มีให้ใช้   : ajuda" ; tput sgr0
 echo ""
 if [[ "$optiondb" = '2' ]]; then
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
