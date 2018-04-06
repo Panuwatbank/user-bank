@@ -1,8 +1,8 @@
 #!/bin/bash
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager 2.0.1" ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
-echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต 80, 3128, 8080 e 8000" ; echo " เพื่อไห้อนุญาตเซิฟเวอร์ SSH e Dropbear e openvpn "
-echo "● Configurar o OpenSSH portas 22 e 143 ubuntu Dropbear para rodar nas portas 109 "
+echo "● การติดตั้ง e กำหนดค่า o พร็อกซี่ ปลาหมึก บน พอร์ต, 80, 3128, 8080 e 8000"🇺🇸 ; echo " เพื่อไห้อนุญาตเซิฟเวอร์ SSH e Dropbear e openvpn "
+echo "● Configurar o OpenSSH o Openvpn pritunl" Dropbear para rodar nas portas 22 143 e 109"
 echo "● ติดตั้ง ชุด สคริปต์  สำหรับ ใช้งาน ในอุปกรณ์ นี้ sistema para " ; tput sgr0
 
 echoecho ""
@@ -16,7 +16,7 @@ echo "a. ติดตั้งและใช้ 'VPS Manager 2.0'บน อุ�
 echo "b. สร้าง จัดการ และ ลบผู้ใช้ จำนวนไม่ จำกัด ใน    ชุด สคริป นี้  ."
 echo ""
 tput setaf 3 ; tput bold ; read -n 1 -s -p "กดปุ่ม เพื่อ ดำเนิน การต่อ qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
-echo "2. Você não pode:"
+echo "2. คุณสามารถ:"
 echo "a. Editar, modificar, compartilhar ou redistribuir (gratuitamente ou comercialmente)"
 echo "esse conjunto de scripts sem autorização do desenvolvedor."
 echo "b. Modificar ou editar o conjunto de scripts para fazer você parecer o desenvolvedor dos scripts."
