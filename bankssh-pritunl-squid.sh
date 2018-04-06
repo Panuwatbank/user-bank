@@ -79,6 +79,9 @@ echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
 cd
+sudo apt-get install dropbear
+sudo rm /etc/default/dropbear
+sudo wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/dropbear -O /etc/default/dropbear
 
 cd
 #!/usr/bin/env bash
@@ -212,6 +215,11 @@ if [[ "$sshcompression" = 's' ]]; then
 fi
 if [[ "$sshcompression" = 'n' ]]; then
 	grep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
+/etc/init.d/squiq restart
+/etc/init.d/squiq3 restart
+/etc/init.d/ssh restart
+/etc/init.d/dropbear restart
+/etc/init.d/dropbear start
+sudo pritunl setup-key
 fi
 exit 1
-sudo pritunl setup-key
