@@ -12,10 +12,10 @@ tput setaf 2 ; tput bold ; echo "	Termos de Uso" ; tput sgr0
 echo ""
 
 
-echo "เมื่อใช้  'VPS Manager 2.0' คุณ ยอมรับ ใน ข้อกำหนด นี้  uso:"
+echo "เมื่อใช้  'VPS' คุณ ยอมรับ ใน ข้อกำหนด นี้  uso:"
 echo ""
 echo "1. คุณสามารถ:"
-echo "a. ติดตั้งและใช้ 'VPS Manager 2.0'บน อุปกรณ์ ของคุณ ' no(s) seu(s) servidor(es)."
+echo "a. ติดตั้งและใช้ 'VPS'บน อุปกรณ์ ของคุณ ' no(s) seu(s) servidor(es)."
 echo "b. สร้าง จัดการ และ ลบผู้ใช้ จำนวนไม่ จำกัด ใน    ชุด สคริป นี้  ."
 echo ""
 tput setaf 3 ; tput bold ; read -n 1 -s -p "กดปุ่ม เพื่อ ดำเนิน การต่อ qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
@@ -57,49 +57,23 @@ tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuraç�
 sleep 3
 apt-get update -y
 apt-get upgrade -y
-cd
-# install dropbear
-apt-get -y install dropbear
-sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=109"/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS=" -p 110 -p 109"/g' /etc/default/dropbear
-echo "/bin/false" >> /etc/shells
-echo "/usr/sbin/nologin" >> /etc/shells
-service ssh restart
-service dropbear restart
-cd
-echo""
+
+
+
 fi
-cd
-#!/usr/bin/env bash
-echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.6.list
-echo "deb http://repo.pritunl.com/stable/apt xenial main" > /etc/apt/sources.list.d/pritunl.list
-apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
-apt-get --assume-yes update
-apt-get --assume-yes upgrade
-apt-get --assume-yes install pritunl mongodb-org
-systemctl start pritunl mongod
-systemctl enable pritunl mongod
-sudo service pritunl start
-cd
-# Install Pritunl Ubuntu 14.04 x 64bit
-#!Eof/cd
-sudo tee -a /etc/apt/sources.list.d/mongodb-org-3.6.list << EOF
-deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.6 multiverse
-EOF
-sudo tee -a /etc/apt/sources.list.d/pritunl.list << EOF
-deb http://repo.pritunl.com/stable/apt trusty main
-EOF
-Eof
-apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 42F3E95A2C4F08279C4960ADD68FA50FEA312927
-apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A 
-apt-get update
-apt-get --assume-yes install pritunl mongodb-org
-service pritunl start
-
-
-
+if [ -d "/default/dropbear/" ] install dropbear
+apt-get -y install dropbear
+           sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
+           sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=109"/g' /etc/default/dropbear
+           sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS=" -p 110 -p 109"/g' /etc/default/dropbear
+           echo "/bin/false" >> /etc/shells
+           echo "/usr/sbin/nologin" >> /etc/shells
+	   if
+	   if [-f "/etc/init.d/dropbear"]
+	   then
+           service dropbear eload > /dev/null
+           /etc/init.d/dropbear restart > /dev/null
+fi
 rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
@@ -109,41 +83,33 @@ if [ -f "/usr/sbin/ufw" ] ; then
 	ufw allow 143/tcp ; ufw allow 80/tcp ; ufw allow 3128/tcp ; ufw allow 8000/tcp ; ufw allow 8080/tcp
 fi
 if [ -d "/etc/squid3/" ]
-then
-	wget https://raw.githubusercontent.com/Panuwatbank/sshd/master/squiduser -O /tmp/sqd1
-	mv /etc/squid/squid.conf /etc/squid/squid.conf.default
+then	
+        wget https://.githubusercontent.com/Panuwatbank/sshd/master/squiduser1 -O /tmp/sqd1
 	echo "acl url3 dstdomain -i $ipdovps" > /tmp/sqd2
-	wget https://raw.githubusercontent.com/3955/user-bank/master/squid2.txt -O /tmp/sqd3
-	cat /sqd1/sqd2  > /etc/squid3/squid.conf
-	wget https://raw.githubusercontent.com/3955/user-bank/master/payload.txt -O /etc/squid3/payload.txt
-	echo " " >> /etc/squid3/payload.txt
+	wget https://raw.githubusercontent.com/Panuwatbank/sshd/master/squiduser -O /tmp/sqd3
+        cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid3/squid.conf
+	wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/payload -O /etc/squid3/payload
+	wget https://raw.githubusercontent.com/Panuwatbank/user-bank/master/squid2.txt -O /tmp/sqd3
+	wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/payload -O /etc/squid3/payload
+	echo " " >> /etc/squid3/payload
 	grep -v "^Port 143" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
 	echo "Port 143" >> /etc/ssh/sshd_config
 	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
 	echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-	wget https://raw.githubusercontent.com/3955/user-bank/master/addhost.sh -O /bin/addhost
-	chmod +x /bin/addhost
-	wget https://raw.githubusercontent.com/3955/user-bank/master/alterarsenha.sh -O /bin/alterarsenha
-	chmod +x /bin/alterarsenha
-	wget https://raw.githubusercontent.com/3955/user-bank/master/criarusuario2.sh -O /bin/criarusuario
-	chmod +x /bin/criarusuario
-	wget https://raw.githubusercontent.com/3955/user-bank/master/delhost.sh -O /bin/delhost
-	chmod +x /bin/delhost
-	wget https://raw.githubusercontent.com/3955/user-bank/master/expcleaner2.sh -O /bin/expcleaner
-	chmod +x /bin/expcleaner
-	wget https://raw.githubusercontent.com/3955/user-bank/master/mudardata.sh -O /bin/mudardata
-	chmod +x /bin/mudardata
-	wget https://raw.githubusercontent.com/3955/user-bank/master/remover.sh -O /bin/remover
-	chmod +x /bin/remover
-	wget https://raw.githubusercontent.com/3955/user-bank/master/sshlimiter2.sh -O /bin/sshlimiter
-	chmod +x /bin/sshlimiter
-	wget https://raw.githubusercontent.com/3955/user-bank/master/alterarlimite.sh -O /bin/alterarlimite
-	chmod +x /bin/alterarlimite
-	wget https://raw.githubusercontent.com/3955/user-bank/master/ajuda.sh -O /bin/ajuda
-	chmod +x /bin/ajuda
-	wget https://raw.githubusercontent.com/3955/user-bank/master/sshmonitor2.sh -O /bin/sshmonitor
-	chmod +x /bin/sshmonitor
-	if [ ! -f "/etc/init.d/squid3" ]
+	wget https://raw.githubusercontent.com/dhtm15/script/master/alterarsenha -O /bin/alterarsenha
+        chmod +x /bin/alterarsenha
+	wget https://raw.githubusercontent.com/dhtm15/script/master/criarusuario -O /bin/criarusuario
+        chmod +x /bin/criarusuario
+        wget https://raw.githubusercontent.com/dhtm15/script/master/mudardata -O /bin/mudardataa
+        chmod +x /bin/mudardata
+        wget https://raw.githubusercontent.com/dhtm15/script/master/remover -O /bin/remover
+        chmod +x /bin/remover
+        wget https://raw.githubusercontent.com/dhtm15/script/master/ajuda -O /bin/ajuda
+        chmod +x /bin/ajuda
+        wget https://raw.githubusercontent.com/dhtm15/script/master/statusvpn -O /bin/statusvpn
+        chmod +x /bin/statusvpn
+	
+       if [-f "/etc/init.d/squid3" ]
 	then
 		service squid3 reload > /dev/null
 	else
@@ -158,38 +124,30 @@ then
 fi
 if [ -d "/etc/squid/" ]
 then
-	wget https://raw.githubusercontent.com/3955/user-bank/master/squid1.txt -O /tmp/sqd1
+	wget https://.githubusercontent.com/Panuwatbank/sshd/master/squiduser1 -O /tmp/sqd1
 	echo "acl url3 dstdomain -i $ipdovps" > /tmp/sqd2
-	wget https://raw.githubusercontent.com/3955/user-bank/master/squid.txt -O /tmp/sqd3
-	cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid/squid.conf
-	wget https://raw.githubusercontent.com/3955/user-bank/master/payload.txt -O /etc/squid/payload.txt
-	echo " " >> /etc/squid/payload.txt
+	wget https://raw.githubusercontent.com/Panuwatbank/sshd/master/squiduser -O /tmp/sqd3
+        cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid/squid.conf
+	wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/payload -O /etc/squid3/payload
+	wget https://raw.githubusercontent.com/Panuwatbank/user-bank/master/squid2.txt -O /tmp/sqd3
+	wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/payload -O /etc/squid/payload
+	echo " " >> /etc/squid/payload
 	grep -v "^Port 143" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
 	echo "Port 143" >> /etc/ssh/sshd_config
 	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
 	echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-	wget https://raw.githubusercontent.com/3955/user-bank/master/addhost.sh -O /bin/addhost
-	chmod +x /bin/addhost
-	wget https://raw.githubusercontent.com/3955/user-bank/master/alterarsenha.sh -O /bin/alterarsenha
-	chmod +x /bin/alterarsenha
-	wget https://raw.githubusercontent.com/3955/user-bank/master/criarusuario2.sh -O /bin/criarusuario
-	chmod +x /bin/criarusuario
-	wget https://raw.githubusercontent.com/3955/user-bank/master/delhost.sh -O /bin/delhost
-	chmod +x /bin/delhost
-	wget https://raw.githubusercontent.com/3955/user-bank/master/expcleaner2.sh -O /bin/expcleaner
-	chmod +x /bin/expcleaner
-	wget https://raw.githubusercontent.com/3955/user-bank/master/mudardata.sh -O /bin/mudardata
-	chmod +x /bin/mudardata
-	wget https://raw.githubusercontent.com/3955/user-bank/master/remover.sh -O /bin/remover
-	chmod +x /bin/remover
-	wget https://raw.githubusercontent.com/3955/user-bank/master/sshlimiter2.sh -O /bin/sshlimiter
-	chmod +x /bin/sshlimiter
-	wget https://raw.githubusercontent.com/3955/user-bank/master/alterarlimite.sh -O /bin/alterarlimite
-	chmod +x /bin/alterarlimite
-	wget https://raw.githubusercontent.com/3955/user-bank/master/ajuda.sh -O /bin/ajuda
-	chmod +x /bin/ajuda
-	wget https://raw.githubusercontent.com/3955/user-bank/master/sshmonitor2.sh -O /bin/sshmonitor
-	chmod +x /bin/sshmonitor
+	wget https://raw.githubusercontent.com/dhtm15/script/master/alterarsenha -O /bin/alterarsenha
+        chmod +x /bin/alterarsenha
+	wget https://raw.githubusercontent.com/dhtm15/script/master/criarusuario -O /bin/criarusuario
+        chmod +x /bin/criarusuario
+        wget https://raw.githubusercontent.com/dhtm15/script/master/mudardata -O /bin/mudardataa
+        chmod +x /bin/mudardata
+        wget https://raw.githubusercontent.com/dhtm15/script/master/remover -O /bin/remover
+        chmod +x /bin/remover
+        wget https://raw.githubusercontent.com/dhtm15/script/master/ajuda -O /bin/ajuda
+        chmod +x /bin/ajuda
+        wget https://raw.githubusercontent.com/dhtm15/script/master/statusvpn -O /bin/statusvpn
+        chmod +x /bin/statusvpn
 	if [ ! -f "/etc/init.d/squid" ]
 	then
 		service squid reload > /dev/null
@@ -219,14 +177,18 @@ if [[ "$sshcompression" = 's' ]]; then
 	echo "Compression yes" >> /etc/ssh/sshd_config
 fi
 if [[ "$sshcompression" = 'n' ]]; then
-	grep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
-	
-/etc/init.d/squiq restart
-/etc/init.d/squiq3 restart
-/etc/init.d/ssh restart
-/etc/init.d/dropbear restart
-/etc/init.d/dropbear start
-sudo service pritunl restart
-sudo pritunl setup-key
+	rep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
+	wget https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+	chmod +x speedtest-cli
+	ssh-keygen -A
+        cat /dev/null > ~/.bash_history && history -c
+        /etc/init.d/squiq restart
+        /etc/init.d/squiq3 restart
+        /etc/init.d/ssh restart
+        /etc/init.d/dropbear restart
+        /etc/init.d/dropbear start
+        sudo service pritunl restart
+        sudo pritunl setup-key
+
 fi
 exit 1
