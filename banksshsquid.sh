@@ -24,16 +24,13 @@ echo "a. Editar, modificar, compartilhar ou redistribuir (gratuitamente ou comer
 echo "esse conjunto de scripts sem autorização do desenvolvedor."
 echo "b. Modificar ou editar o conjunto de scripts para fazer você parecer o desenvolvedor dos scripts."
 echo ""
-
 tput setaf 3 ; tput bold ; read -n 1 -s -p "กดปุ่มใดก็ได้เพื่อดำเนินการต่อ..." ; echo "" ; echo "" ; tput sgr0
-
 IP=$(wget -qO- ipv4.icanhazip.com)
 read -p "Para continuar confirme o IP deste servidor: " -e -i $IP ipdovps
 if [ -z "$ipdovps" ]
 then
 echo ""
-
-	tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "" ; echo " Você não digitou o IP deste servidor. Tente novamente. " ; echo "" ; echo "" ; tput sgr0
+tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "" ; echo " Você não digitou o IP deste servidor. Tente novamente. " ; echo "" ; echo "" ; tput sgr0
 	exit 1
 fi
 if [ -f "/root/usuarios.db" ]
@@ -57,11 +54,10 @@ tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuraç�
 sleep 3
 apt-get update -y
 apt-get upgrade -y
-
-
-
+echo ""
 fi
-if [ -d "/default/dropbear/" ] install dropbear
+           if [ -d "/default/dropbear/" ] install dropbear 
+	   cd
 apt-get -y install dropbear
            sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
            sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=109"/g' /etc/default/dropbear
@@ -167,7 +163,6 @@ tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH 22 143 dropbear ใช�
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "คำสั่งใช้งาน หากต้องการดูคำสั่ง: ajuda"; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "อ่านเอกสาร เพื่อหลีกเลี่ยง ข้อสงสัย และปัญหา! "; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "สคริปต์ เพิ่มชื่อผู้ใช้งาน:criarusuario" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "ข้อมูลเพิ่มเติม ดูคีร์ ⏬🔽⏬service🚔pritunl🔽⏬🔽 ด่านล่าง ไปที่หน้าไวซ๋" htttps://ip_Server; tput sgr0
 echo ""
 if [[ "$optiondb" = '2' ]]; then
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
@@ -178,17 +173,5 @@ if [[ "$sshcompression" = 's' ]]; then
 fi
 if [[ "$sshcompression" = 'n' ]]; then
 	rep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
-	wget https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
-	chmod +x speedtest-cli
-	ssh-keygen -A
-        cat /dev/null > ~/.bash_history && history -c
-        /etc/init.d/squiq restart
-        /etc/init.d/squiq3 restart
-        /etc/init.d/ssh restart
-        /etc/init.d/dropbear restart
-        /etc/init.d/dropbear start
-        sudo service pritunl restart
-        sudo pritunl setup-key
-
 fi
-exit 1
+exit1
