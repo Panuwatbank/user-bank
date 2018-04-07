@@ -110,10 +110,11 @@ if [ -f "/usr/sbin/ufw" ] ; then
 fi
 if [ -d "/etc/squid3/" ]
 then
-	wget https://raw.githubusercontent.com/3955/user-bank/master/squid1.txt -O /tmp/sqd1
+	wget https://raw.githubusercontent.com/Panuwatbank/sshd/master/squiduser -O /tmp/sqd1
+	mv /etc/squid/squid.conf /etc/squid/squid.conf.default
 	echo "acl url3 dstdomain -i $ipdovps" > /tmp/sqd2
 	wget https://raw.githubusercontent.com/3955/user-bank/master/squid2.txt -O /tmp/sqd3
-	cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid3/squid.conf
+	cat /sqd1/sqd2  > /etc/squid3/squid.conf
 	wget https://raw.githubusercontent.com/3955/user-bank/master/payload.txt -O /etc/squid3/payload.txt
 	echo " " >> /etc/squid3/payload.txt
 	grep -v "^Port 143" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
