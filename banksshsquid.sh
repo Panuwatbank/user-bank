@@ -144,6 +144,10 @@ then
         chmod +x /bin/ajuda
         wget https://raw.githubusercontent.com/dhtm15/script/master/statusvpn -O /bin/statusvpn
         chmod +x /bin/statusvpn
+	wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+	chmod +x speedtest-cli
+ssh-keygen -A
+cat /dev/null > ~/.bash_history && history -c
 	if [ ! -f "/etc/init.d/squid" ]
 	then
 		service squid reload > /dev/null
@@ -172,6 +176,6 @@ if [[ "$sshcompression" = 's' ]]; then
 	echo "Compression yes" >> /etc/ssh/sshd_config
 fi
 if [[ "$sshcompression" = 'n' ]]; then
-	rep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
+	grep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
 fi
-exit1
+exit 1
