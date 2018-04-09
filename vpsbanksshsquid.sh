@@ -1,10 +1,10 @@
 #!/bin/bash
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS อัตโนมัติ รุ่น ไอ้เหี้ยไอ้สัส" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager 2.0 (versão gratuita)" ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
-echo "● การติดตั้งกำหนดค่าพร็อกซี่ปลาหมึกบนพอร์ต, 80, 3128, 8080 e 8000"; echo "เพื่อไห้อนุญาตเซิฟเวอร์ของคุณและทั้งหมด "tput sgr0
-echo "● OpenSSH Openvpn pritunl Dropbear, echo พอร์ตเริ่มต้น 22 143 e 109  :tput sgr0
-echo "● ติดตั้ง ชุด สคริปต์  สำหรับ ใช้งาน ในอุปกรณ์ นี้ sistema para " ; tput sgr0
-echoecho ""
+echo "● Instalar e configurar o proxy squid nas portas 80, 3128, 8080 e 8799" ; echo "  para permitir conexões SSH para este servidor"
+echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
+echo "● ติดตั้ง ชุด สคริปต์  สำหรับ ใช้งาน ในอุปกรณ์ นี้" ; tput sgr0
+echo ""
 tputtput setaf 3 ; tput bold ; read -n 1 -s -p "กด ปุ่ม ใดๆ เพื่อ ดำเนินการต่อ ..." ; echo "" ; echo "" ; tput sgr0
 tput setaf 2 ; tput bold ; echo "Termos de Uso" ; tput sgr0
 echo ""
