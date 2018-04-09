@@ -55,21 +55,6 @@ sleep 3
 apt-get update -y
 apt-get upgrade -y
 echo ""
-fi
-           if [ -d "/default/dropbear/" ] install dropbear 
-	   cd
-apt-get -y install dropbear
-           sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-           sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=109"/g' /etc/default/dropbear
-           sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS=" -p 110 -p 109"/g' /etc/default/dropbear
-           echo "/bin/false" >> /etc/shells
-           echo "/usr/sbin/nologin" >> /etc/shells
-	   if
-	   if [-f "/etc/init.d/dropbear"]
-	   then
-           service dropbear eload > /dev/null
-           /etc/init.d/dropbear restart > /dev/null
-fi
 rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
@@ -78,34 +63,34 @@ apt-get purge apache2 -y
 if [ -f "/usr/sbin/ufw" ] ; then
 	ufw allow 143/tcp ; ufw allow 80/tcp ; ufw allow 3128/tcp ; ufw allow 8000/tcp ; ufw allow 8080/tcp
 fi
+if [ -d "/default/dropbear" ] 	   
+ubt ()	{
+         apt-getapt-get -y install dropbear
+         wget -O /etc/default/dropbear https://raw.githubusercontent.com/phanuwat3955/wgt-bank/master/dropbear 
+         cp /etc/default/dropbear /etc/init.d/dropbear 
+         service dropbear restart && update-rc.d dropbear defaults
+         iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+	 serviceservice dropbear eload > /dev/null
+         iptables-save
+
+fi
 if [ -d "/etc/squid3/" ]
-then	
-        wget https://.githubusercontent.com/Panuwatbank/sshd/master/squiduser1 -O /tmp/sqd1
-	echo "acl url3 dstdomain -i $ipdovps" > /tmp/sqd2
-	wget https://raw.githubusercontent.com/Panuwatbank/sshd/master/squiduser -O /tmp/sqd3
-        cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid3/squid.conf
-	wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/payload -O /etc/squid3/payload
-	wget https://raw.githubusercontent.com/Panuwatbank/user-bank/master/squid2.txt -O /tmp/sqd3
-	wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/payload -O /etc/squid3/payload
-	echo " " >> /etc/squid3/payload
-	grep -v "^Port 143" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
-	echo "Port 143" >> /etc/ssh/sshd_config
-	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
-	echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-	wget https://raw.githubusercontent.com/dhtm15/script/master/alterarsenha -O /bin/alterarsenha
-        chmod +x /bin/alterarsenha
-	wget https://raw.githubusercontent.com/dhtm15/script/master/criarusuario -O /bin/criarusuario
-        chmod +x /bin/criarusuario
-        wget https://raw.githubusercontent.com/dhtm15/script/master/mudardata -O /bin/mudardataa
-        chmod +x /bin/mudardata
-        wget https://raw.githubusercontent.com/dhtm15/script/master/remover -O /bin/remover
-        chmod +x /bin/remover
-        wget https://raw.githubusercontent.com/dhtm15/script/master/ajuda -O /bin/ajuda
-        chmod +x /bin/ajuda
-        wget https://raw.githubusercontent.com/dhtm15/script/master/statusvpn -O /bin/statusvpn
-        chmod +x /bin/statusvpn
-	
-       if [-f "/etc/init.d/squid3" ]
+then
+ubt ()	{
+	apt-get update
+	apt-get install apache2-utils squid3 -y
+	read -e -p "Your desired username: " usrn
+	htpasswd -c /etc/squid3/passwd $usrn
+	wget -O /etc/squid3/squid.conf https://raw.githubusercontent.com/hidden-refuge/squid-proxy-installer/master/spi-ubuntu.conf --no-check-certificate
+	cp /etc/init/squid3.conf /etc/init.d/squid3
+	service squid3 restart && update-rc.d squid3 defaults
+	iptables -A INPUT -p tcp --dport 3128 -j ACCEPT
+	iptables-save
+	echo
+	echo""squid proxy installed"	
+        {
+if
+[-f "/etc/init.d/squid3" ]
 	then
 		service squid3 reload > /dev/null
 	else
@@ -120,33 +105,22 @@ then
 fi
 if [ -d "/etc/squid/" ]
 then
-	wget https://.githubusercontent.com/Panuwatbank/sshd/master/squiduser1 -O /tmp/sqd1
-	echo "acl url3 dstdomain -i $ipdovps" > /tmp/sqd2
-	wget https://raw.githubusercontent.com/Panuwatbank/sshd/master/squiduser -O /tmp/sqd3
-        cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid/squid.conf
-	wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/payload -O /etc/squid3/payload
-	wget https://raw.githubusercontent.com/Panuwatbank/user-bank/master/squid2.txt -O /tmp/sqd3
-	wget https://raw.githubusercontent.com/Panuwatbank/wgt-bank/master/payload -O /etc/squid/payload
-	echo " " >> /etc/squid/payload
-	grep -v "^Port 143" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
-	echo "Port 143" >> /etc/ssh/sshd_config
-	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
-	echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-	wget https://raw.githubusercontent.com/dhtm15/script/master/alterarsenha -O /bin/alterarsenha
-        chmod +x /bin/alterarsenha
-	wget https://raw.githubusercontent.com/dhtm15/script/master/criarusuario -O /bin/criarusuario
-        chmod +x /bin/criarusuario
-        wget https://raw.githubusercontent.com/dhtm15/script/master/mudardata -O /bin/mudardataa
-        chmod +x /bin/mudardata
-        wget https://raw.githubusercontent.com/dhtm15/script/master/remover -O /bin/remover
-        chmod +x /bin/remover
-        wget https://raw.githubusercontent.com/dhtm15/script/master/ajuda -O /bin/ajuda
-        chmod +x /bin/ajuda
-        wget https://raw.githubusercontent.com/dhtm15/script/master/statusvpn -O /bin/statusvpn
-        chmod +x /bin/statusvpn
-	wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
-	chmod +x speedtest-cli
-ssh-keygen -A
+	wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/hidden-refuge/squid-proxy-installer/master/spi-rhel5664.conf --no-check-certificate;;
+	esac
+	service squid restart && chkconfig squid on
+	service httpd stop && chkconfig httpd off
+	csfsetup
+	echo
+	echo "squid proxy installed"
+	wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/hidden-refuge/squid-proxy-installer/master/spi-rhel7.conf --no-check-certificate;;
+	esac
+	systemctl restart squid && systemctl enable squid
+	iptables -A INPUT -p tcp --dport 3128 -j ACCEPT
+	iptables-save
+	echo
+	echo "squid proxy installed"	
+}
+fi
 cat /dev/null > ~/.bash_history && history -c
 	if [ ! -f "/etc/init.d/squid" ]
 	then
