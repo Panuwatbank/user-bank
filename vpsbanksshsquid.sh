@@ -1,17 +1,13 @@
 #!/bin/bash
-
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS อัตโนมัติ รุ่น ไอ้เหี้ยไอ้สัส" ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
 echo "● การติดตั้งกำหนดค่าพร็อกซี่ปลาหมึกบนพอร์ต, 80, 3128, 8080 e 8000"; echo "เพื่อไห้อนุญาตเซิฟเวอร์ของคุณและทั้งหมด "tput sgr0
 echo "● OpenSSH Openvpn pritunl Dropbear, echo พอร์ตเริ่มต้น 22 143 e 109  :tput sgr0
 echo "● ติดตั้ง ชุด สคริปต์  สำหรับ ใช้งาน ในอุปกรณ์ นี้ sistema para " ; tput sgr0
-
 echoecho ""
 tputtput setaf 3 ; tput bold ; read -n 1 -s -p "กด ปุ่ม ใดๆ เพื่อ ดำเนินการต่อ ..." ; echo "" ; echo "" ; tput sgr0
-tput setaf 2 ; tput bold ; echo "	Termos de Uso" ; tput sgr0
+tput setaf 2 ; tput bold ; echo "Termos de Uso" ; tput sgr0
 echo ""
-
-
 echo "เมื่อใช้  'VPS' คุณ ยอมรับ ใน ข้อกำหนด นี้  uso:"
 echo ""
 echo "1. คุณสามารถ:"
@@ -122,12 +118,22 @@ then
 }
 fi
 cat /dev/null > ~/.bash_history && history -c
-	if [ ! -f "/etc/init.d/squid" ]
-	then
-		service squid reload > /dev/null
-	else
-		/etc/init.d/squid reload > /dev/null
-	fi
+	wget https://raw.githubusercontent.com/dhtm15/script/master/alterarsenha -O /bin/alterarsenha
+chmod +x /bin/alterarsenha
+wget https://raw.githubusercontent.com/dhtm15/script/master/criarusuario -O /bin/criarusuario
+chmod +x /bin/criarusuario
+wwget https://raw.githubusercontent.com/dhtm15/script/master/mudardata -O /bin/mudardataa
+chmod +x /bin/mudardata
+wget https://raw.githubusercontent.com/dhtm15/script/master/remover -O /bin/remover
+chmod +x /bin/remover
+wget https://raw.githubusercontent.com/dhtm15/script/master/ajuda -O /bin/ajuda
+chmod +x /bin/ajuda
+wget https://raw.githubusercontent.com/dhtm15/script/master/statusvpn -O /bin/statusvpn
+chmod +x /bin/statusvpn
+wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+chmod +x speedtest-cli
+ssh-keygen -A
+cat /dev/null > ~/.bash_history && history -c
 	if [ ! -f "/etc/init.d/ssh" ]
 	then
 		service ssh reload > /dev/null
